@@ -37,7 +37,7 @@ class ListAdapter(private val listener: NewsItemClicked): RecyclerView.Adapter<V
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val currentItem = items[position]
         holder.titleView.text = currentItem.title
-        holder.author.text = currentItem.author
+        holder.name.text = currentItem.name
         Glide.with(holder.itemView.context).load(currentItem.imageUrl).into(holder.newsImage)
     }
 
@@ -56,7 +56,7 @@ class ListAdapter(private val listener: NewsItemClicked): RecyclerView.Adapter<V
 class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     val titleView: TextView = itemView.findViewById(R.id.title)
     val newsImage: ImageView = itemView.findViewById(R.id.newsImage)
-    val author: TextView = itemView.findViewById(R.id.authorName)
+    val  name: TextView = itemView.findViewById(R.id.name)
 }
 
 //making an interface to communicate to adapter that an item is clicked
