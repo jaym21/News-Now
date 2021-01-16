@@ -2,21 +2,16 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/headlines"
-        android:title="Top Headlines"/>
+        android:title="Latest"
+        android:icon="@drawable/ic_latest"/>
 
     <item
-        android:id="@+id/science"
-        android:title="Science"/>
+        android:id="@+id/saved"
+        android:title="Saved"
+        android:icon="@drawable/ic_saved"/>
 
     <item
-        android:id="@+id/health"
-        android:title="Health"/>
-
-    <item
-        android:id="@+id/sports"
-        android:title="Sports"/>
-
-    <item
-        android:id="@+id/entertainment"
-        android:title="Entertainment"/>
+        android:id="@+id/search"
+        android:title="Search"
+        android:icon="@drawable/ic_search"/>
 </menu>

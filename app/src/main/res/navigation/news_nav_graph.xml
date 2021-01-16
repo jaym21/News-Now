@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/news_nav_graph"
+    app:startDestination="@id/latestNews">
+
+    <fragment
+        android:id="@+id/latestNews"
+        android:name="com.example.newsnow.fragments.LatestNews"
+        android:label="LatestNews" >
+        <action
+            android:id="@+id/action_latestNews_to_newsArticle"
+            app:destination="@id/newsArticle"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/newsArticle"
+        android:name="com.example.newsnow.fragments.NewsArticle"
+        android:label="NewsArticle" />
+
+    <fragment
+        android:id="@+id/savedNews"
+        android:name="com.example.newsnow.fragments.SavedNews"
+        android:label="SavedNews" >
+        <action
+            android:id="@+id/action_savedNews_to_newsArticle"
+            app:destination="@id/newsArticle"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
+    <fragment
+        android:id="@+id/searchNews"
+        android:name="com.example.newsnow.fragments.SearchNews"
+        android:label="SearchNews" >
+        <action
+            android:id="@+id/action_searchNews_to_newsArticle"
+            app:destination="@id/newsArticle"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
+</navigation>
