@@ -14,9 +14,18 @@ import kotlinx.android.synthetic.main.item_news.view.*
 
 
 //making a Adapter
-class ListAdapter: RecyclerView.Adapter<ViewHolder>() {
+class NewsRVAdapter: RecyclerView.Adapter<NewsRVAdapter.ViewHolder>() {
 
-    private val items: ArrayList<Article> = ArrayList<Article>()
+    private val allNewsItems: ArrayList<Article> = ArrayList<Article>()
+
+    //making a View Holder
+    //we add things that we want to display in that item
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val titleView: TextView = itemView.findViewById(R.id.tvTitle)
+        val newsImage: ImageView = itemView.findViewById(R.id.newsImage)
+        val  name: TextView = itemView.findViewById(R.id.tvName)
+    }
+
     //this creates a view holder
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         //LayoutInflater is used to convert the itemview which is in 'xml' format to view format
@@ -29,15 +38,14 @@ class ListAdapter: RecyclerView.Adapter<ViewHolder>() {
 
     //counts how many items should be present
     override fun getItemCount(): Int {
-        return items.size
+        return allNewsItems.size
     }
 
     //this binds the item with the data
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val currentItem = items[position]
+        val currentItem = allNewsItems[position]
         holder.titleView.text = currentItem.title
         holder.name.text = currentItem.source.name
-        holder.time.text = currentItem.publishedAt
         Glide.with(holder.itemView.context).load(currentItem.urlToImage).into(holder.newsImage)
 
         //setting the onClickListener for news item in recycler view
@@ -53,16 +61,20 @@ class ListAdapter: RecyclerView.Adapter<ViewHolder>() {
     fun setOnItemClickedListener(listener: (Article) -> Unit) {
         onItemClickedListener = listener
     }
+
+    fun updateRV(newRVNews: List<Article>) {
+        //first clearing the older list of articles
+        allNewsItems.clear()
+
+        //adding new news items list which the changes are there
+        allNewsItems.addAll(newRVNews)
+
+        //updating the recyclerview with changes
+        notifyDataSetChanged()
+    }
 }
 
-//making a View Holder
-//we add things that we want to display in that item
-class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    val titleView: TextView = itemView.findViewById(R.id.tvTitle)
-    val newsImage: ImageView = itemView.findViewById(R.id.newsImage)
-    val  name: TextView = itemView.findViewById(R.id.tvName)
-    val time: TextView = itemView.findViewById(R.id.tvTime)
-}
+
 
 
 

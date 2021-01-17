@@ -6,13 +6,13 @@ import com.example.newsnow.apiModels.Article
 
 @Database(entities = [Article::class], version = 1)
 @TypeConverters(Converters::class)
-abstract class NewsArticleDatabase: RoomDatabase(), NewsArticleDAO {
+abstract class NewsArticleDatabase: RoomDatabase(){
     //to get DAO
     abstract fun getNewsArticleDAO(): NewsArticleDAO
 
     companion object {
         @Volatile //volatile is added so other threads can see when this instance is changed
-        private var instance: NewsArticleDAO? = null
+        private var instance: NewsArticleDatabase? = null
         private val LOCK = Any() //used to synchronize instance
 
         //when database is initialized invoke function is called
