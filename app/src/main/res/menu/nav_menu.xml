@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item
-        android:id="@+id/headlines"
-        android:title="Latest"
-        android:icon="@drawable/ic_latest"/>
 
-    <item
-        android:id="@+id/saved"
-        android:title="Saved"
-        android:icon="@drawable/ic_saved"/>
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/latestNews"
+            android:title="Latest"
+            android:icon="@drawable/ic_latest"/>
 
-    <item
-        android:id="@+id/search"
-        android:title="Search"
-        android:icon="@drawable/ic_search"/>
+        <item
+            android:id="@+id/savedNews"
+            android:title="Saved"
+            android:icon="@drawable/ic_saved"/>
+
+        <item
+            android:id="@+id/searchNews"
+            android:title="Search"
+            android:icon="@drawable/ic_search"/>
+    </group>
 </menu>

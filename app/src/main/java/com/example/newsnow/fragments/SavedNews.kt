@@ -16,5 +16,6 @@ class SavedNews: Fragment(R.layout.fragment_savednews) {
 
         //initializing viewModel by casting this as NewsActivity so that we have access to the viewModel created in NewsActivity
         viewModel = (activity as NewsActivity).viewModel
+
     }
 }
