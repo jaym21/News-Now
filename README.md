@@ -1,5 +1,7 @@
 # News-Now
 - News Now is an android app made using Kotlin to get latest news to the user.
+- It uses MVVM Architecture and Room Database.
+- Retrofit2 is used for API response.
 - Recycler View is used to display the news.
 - Volley Library is used to work with the News API and Glide Library is used to display the image of news.
 
