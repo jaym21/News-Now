@@ -20,7 +20,11 @@
     <fragment
         android:id="@+id/newsArticle"
         android:name="com.example.newsnow.fragments.NewsArticle"
-        android:label="NewsArticle" />
+        android:label="NewsArticle" >
+        <argument
+            android:name="article"
+            app:argType="com.example.newsnow.apiModels.Article" />
+    </fragment>
 
     <fragment
         android:id="@+id/savedNews"

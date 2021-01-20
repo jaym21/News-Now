@@ -7,6 +7,7 @@ import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.newsnow.NewsRVAdapter
 import com.example.newsnow.R
@@ -35,6 +36,20 @@ class SearchNews: Fragment(R.layout.fragment_searchnews) {
 
         //setting recycler view
         setRecyclerView()
+
+        //making a bundle to pass article clicked to article fragment
+        newsRVAdapter.setOnItemClickedListener {
+            val bundle = Bundle().apply {
+                putSerializable("article", it)
+            }
+            findNavController().navigate(
+                //passing the action of navigation from search news fragment to article fragment
+                R.id.action_searchNews_to_newsArticle,
+                bundle
+            )
+        }
+
+
 
         //adding delay in search process so that it does not overload the app by making search request at every letter typed
         var job: Job? = null

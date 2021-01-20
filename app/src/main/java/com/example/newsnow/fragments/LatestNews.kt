@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.newsnow.NewsRVAdapter
 import com.example.newsnow.R
@@ -27,6 +28,20 @@ class LatestNews: Fragment(R.layout.fragment_latestnews) {
 
         //setting recyclerView
         setRecyclerView()
+
+        //making a bundle to pass article clicked to article fragment
+        newsRVAdapter.setOnItemClickedListener {
+            val bundle = Bundle().apply {
+                putSerializable("article", it)
+            }
+            findNavController().navigate(
+                //passing the action of navigation from latest news fragment to article fragment
+                R.id.action_latestNews_to_newsArticle,
+                bundle
+            )
+        }
+
+
 
         //making the viewModel observer on latestNews mutableLiveData for LiveData changes
         viewModel.latestNews.observe(viewLifecycleOwner, Observer { response ->

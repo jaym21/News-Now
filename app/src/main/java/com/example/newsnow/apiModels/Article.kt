@@ -3,6 +3,7 @@ package com.example.newsnow.apiModels
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.example.newsnow.apiModels.Source
+import java.io.Serializable
 
 
 @Entity(tableName = "NewsArticles")
@@ -17,4 +18,4 @@ data class Article(
     val title: String,
     val url: String,
     val urlToImage: String
-)
+): Serializable
