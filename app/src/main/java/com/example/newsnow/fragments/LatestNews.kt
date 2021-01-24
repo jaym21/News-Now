@@ -45,7 +45,7 @@ class LatestNews: Fragment(R.layout.fragment_latestnews) {
 
         //making the viewModel observer on latestNews mutableLiveData for LiveData changes
         viewModel.latestNews.observe(viewLifecycleOwner, Observer { response ->
-            //handling the responses using Resource classes
+                //handling the responses using Resource classes
             when(response) {
                 //when we get a successful response hide loading sign
                 is Resource.Success -> {

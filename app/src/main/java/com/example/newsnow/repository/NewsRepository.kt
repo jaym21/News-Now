@@ -2,7 +2,6 @@ package com.example.newsnow.repository
 
 import com.example.newsnow.api.RetrofitInstance
 import com.example.newsnow.database.NewsArticleDatabase
-import retrofit2.Retrofit
 
 class NewsRepository( val database: NewsArticleDatabase) {
 

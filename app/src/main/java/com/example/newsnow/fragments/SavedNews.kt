@@ -20,12 +20,12 @@ class SavedNews: Fragment(R.layout.fragment_savednews) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //setting recycler view
-        setRecyclerView()
 
         //initializing viewModel by casting this as NewsActivity so that we have access to the viewModel created in NewsActivity
         viewModel = (activity as NewsActivity).viewModel
 
+        //setting recycler view
+        setRecyclerView()
 
         //making a bundle to pass article clicked to article fragment
         newsRVAdapter.setOnItemClickedListener {
