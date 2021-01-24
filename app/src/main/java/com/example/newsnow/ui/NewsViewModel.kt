@@ -18,6 +18,7 @@ class NewsViewModel(private val newsRespository: NewsRepository): ViewModel() {
     //getting the latestNews as mutableLiveData in the viewModel
     val latestNews: MutableLiveData<Resource<NewsResponse>> = MutableLiveData()
     var latestNewsPage = 1
+    var latestNewsResponse: NewsResponse? = null
 
     init {
         getLatestNews("in")
@@ -39,7 +40,22 @@ class NewsViewModel(private val newsRespository: NewsRepository): ViewModel() {
         if (response.isSuccessful) {
             //checking if body of response is not null
             response.body()?. let {
-                return Resource.Success(it)
+                //after getting the response(i.e first 20 articles) we increase the page no.
+                latestNewsPage++
+                //storing the response received from api
+                if(latestNewsResponse == null) {
+                    latestNewsResponse = it
+                }else{
+                    //if this is not the first 20 articles response received then we will add the new received articles to the previous articles saved
+                    //getting the previous articles received earlier
+                    val previousArticles = latestNewsResponse?.articles
+                    //getting the new articles received from api
+                    val newArticles = it.articles
+                    //adding the new articles in the previous articles
+                    previousArticles?.addAll(newArticles)
+                }
+                //returning the latestnewsresponse consisting all the articles received from api and if it is null then that means it is the first response received then returning the response received
+                return Resource.Success(latestNewsResponse?: it)
             }
         }
         //when response is unsuccessful

@@ -45,7 +45,7 @@ class NewsRVAdapter: RecyclerView.Adapter<NewsRVAdapter.ViewHolder>() {
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val currentItem = allNewsItems[position]
         holder.titleView.text = currentItem.title
-        holder.name.text = currentItem.source.name
+        holder.name.text = currentItem.source?.name
         Glide.with(holder.itemView.context).load(currentItem.urlToImage).into(holder.newsImage)
 
         //setting the onClickListener for news item in recycler view
