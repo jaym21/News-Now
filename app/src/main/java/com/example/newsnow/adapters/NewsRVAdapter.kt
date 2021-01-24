@@ -72,6 +72,10 @@ class NewsRVAdapter: RecyclerView.Adapter<NewsRVAdapter.ViewHolder>() {
         //updating the recyclerview with changes
         notifyDataSetChanged()
     }
+
+    fun getArticle(position: Int): Article {
+        return allNewsItems[position]
+    }
 }
 
 

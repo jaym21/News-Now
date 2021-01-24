@@ -9,12 +9,14 @@ import androidx.lifecycle.ViewModel
 import androidx.navigation.fragment.navArgs
 import com.example.newsnow.R
 import com.example.newsnow.ui.NewsActivity
+import com.example.newsnow.ui.NewsViewModel
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_newsartcile.*
 
 
 class NewsArticle: Fragment(R.layout.fragment_newsartcile) {
 
-    lateinit var viewModel: ViewModel
+    lateinit var viewModel: NewsViewModel
     val args: NewsArticleArgs by navArgs()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -29,6 +31,13 @@ class NewsArticle: Fragment(R.layout.fragment_newsartcile) {
         webView.apply {
             webViewClient = WebViewClient()
             loadUrl(article.url)
+        }
+
+        //setting the fab click to save the article in database
+        fabSaveNews.setOnClickListener {
+            viewModel.saveArticle(article)
+            //to aware user that article is saved
+            Snackbar.make(view, "Article is saved", Snackbar.LENGTH_SHORT).show()
         }
     }
 }
